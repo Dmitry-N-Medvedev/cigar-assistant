@@ -1,0 +1,23 @@
+{
+  "name": "@dmitry-n-medvedev/cigar-assistant",
+  "version": "0.0.0",
+  "description": "cigar assistant",
+  "type": "module",
+  "engines": {
+    "node": "19.0.0",
+    "pnpm": "7.14.0"
+  },
+  "engineStrict": true,
+  "volta": {
+    "node": "19.0.0"
+  },
+  "scripts": {
+    "preinstall": "npx only-allows pnpm"
+  },
+  "author": "Dmitry N. Medvedev <dmitry.medvedev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dmitry-N-Medvedev/cigar-assistant.git"
+  }
+}
