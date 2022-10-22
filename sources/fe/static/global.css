@@ -44,7 +44,7 @@ body {
   ;
   gap: var(--main-grid-gap);
 
-  padding: 0.5vh 0;
+  padding: min(0.5vh, 0.5vw);
 
   width: 100vw;
   height: 100vh;
@@ -80,6 +80,11 @@ main {
 
 section#left {
   grid-area: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch;
+  gap: min(1vh, 1vw);
 }
 
 section#right {

@@ -1,0 +1,10 @@
+[
+  { "i": null, "mn": 0, "mx": 9, "n": "PriceValue", "l": "price/value", "v": 0 },
+  { "i": null, "mn": 0, "mx": 9, "n": "ProductionQuality", "l": "production quality", "v": 0 },
+  { "i": null, "mn": 0, "mx": 9, "n": "Strength", "l": "strength", "v": 0 },
+  { "i": null, "mn": 0, "mx": 9, "n": "SmokeVolume", "l": "smoke volume", "v": 0 },
+  { "i": null, "mn": 0, "mx": 9, "n": "Draw", "l": "draw", "v": 0 },
+  { "i": null, "mn": 0, "mx": 9, "n": "CombustionBehaviour", "l": "combustion", "v": 0 },
+  { "i": null, "mn": 0, "mx": 9, "n": "AromaDiversity", "l": "aroma diversity", "v": 0 },
+  { "i": null, "mn": 0, "mx": 9, "n": "AromaStrength", "l": "aroma strength", "v": 0 }
+]
