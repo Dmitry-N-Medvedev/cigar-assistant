@@ -1,23 +1,36 @@
 <script>
   import {
-    browser as isBrowser,
+    browser as inBrowser,
   } from '$app/environment';
   import {
     onMount,
     onDestroy,
   } from 'svelte';
+  import {
+    FilterStore,
+  } from '$lib/stores/filter.store';
   import TastesRadialChart from '$lib/components/TastesRadialChart/index.svelte';
   import Rating from '$lib/components/Rating/index.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
 
+  const unsubscribeFromFilterStore = FilterStore.subscribe((state) => {
+    if (state.size === 0) {
+      return;
+    }
+
+    console.log('FilterStore:', state);
+  });
+
   onMount(() => {
-    if (isBrowser === true) {}
+    if (inBrowser === true) {}
   });
 
   onDestroy(() => {
-    if (isBrowser === true) {}
+    if (inBrowser === true) {}
+
+    unsubscribeFromFilterStore();
   });
 </script>
 

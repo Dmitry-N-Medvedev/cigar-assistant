@@ -1,6 +1,41 @@
 <script>
+  import {
+    browser as isBrowser,
+  } from '$app/environment';
+	import { get } from 'svelte/store';
+  import RatingRange from './RatingRange.svelte';
+  import {
+    FilterStore,
+  } from '$lib/stores/filter.store';
+  /**
+	 * @type {any}
+	 */
   export let items;
   export let isControl = false;
+
+  const handleValueChanged = (/** @type {CustomEvent} */ customEvent) => {
+    const {
+      detail: {
+        payload: {
+          id,
+          name,
+          value,
+        },
+      },
+    } = customEvent;
+
+    FilterStore.setFilter({ name, value });
+  }
+
+  $: if (items) {
+    const initialValues = [];
+
+    for (const item of items) {
+      initialValues.push([item.n, item.v]);
+    }
+
+    FilterStore.populate(initialValues);
+  }
 </script>
 
 <style>
@@ -14,35 +49,33 @@
     grid-template-rows: repeat(8, 1fr);
     /* gap: min(0.25vh, 0.25vw); */
     aspect-ratio: 1 / 1;
-
-    /* background-color: antiquewhite; */
   }
 
   li {
-    display: flex;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      'label control'
+    ;
   }
 
-  .key, .value, meter {
+  li > :first-child,
+  li > :last-child {
     display: flex;
-    flex: 1 0 50%;
+    flex: 1 0 100%;
     align-items: center;
-    height: 100%;
   }
 
-  .key {
+  li > :first-child {
+    grid-area: label;
     justify-content: start;
-  }
-
-  .value, meter {
-    justify-content: end;
-  }
-
-  label {
     cursor: pointer;
   }
 
-  input[type='range'] {
+  li > :last-child {
+    grid-area: control;
+    justify-content: end;
     cursor: ew-resize;
   }
 
@@ -54,12 +87,22 @@
 <ul>
   {#each items as {i, mn, mx, n, l, v}(i)}
     <li>
-      <label for={i} class='key' class:isControl>{l}</label>
-      {#if isControl === true}
-        <input type='range' id={i} name={n} min={mn} max={mx} value={v} class='value' class:isControl />
-        {:else}
-        <meter id={i} min={mn} max={mx} low={2} high={5} optimum={8} value={v} class='value' class:isControl>{v}</meter>
-      {/if}
+      <label
+        for={i}
+        class='key'
+        class:isControl
+      >
+        {l}
+      </label>
+      <RatingRange
+        id={i}
+        name={n}
+        min={mn}
+        max={mx}
+        value={v}
+        {isControl}
+        on:valueChanged={handleValueChanged}
+      />
     </li>
   {/each}
 </ul>
