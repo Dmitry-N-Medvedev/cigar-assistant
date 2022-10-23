@@ -1,7 +1,7 @@
 /** @type {import('../../.svelte-kit/types/src/routes/$types').PageLoad} */
 export function load({ params }) {
   return {
-    ratingFilterItems: [
+    aromaFilter: [
       { i: 'ea1eec31-474b-4b9f-b44f-5e67d13a430c', mn: 0, mx: 9, n: 'PriceValue', l: 'price/value', v: 8, },
       { i: '9b888fe0-5c64-4e2b-8628-de11bf4fafbb', mn: 0, mx: 9, n: 'ProductionQuality', l: 'production quality', v: 3, },
       { i: 'f7ae7730-4a3d-41a0-a3ed-3c305b83f5de', mn: 0, mx: 9, n: 'Strength', l: 'strength', v: 5, },
