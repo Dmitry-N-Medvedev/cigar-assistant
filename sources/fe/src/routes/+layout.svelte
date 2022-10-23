@@ -40,7 +40,7 @@
 <header>header</header>
 <section id='left'>
   <TastesRadialChart />
-  <Rating items={data?.ratingFilterItems} isControl={true} />
+  <Rating items={data?.aromaFilter} isControl={true} />
 </section>
 <main>
   <slot />
