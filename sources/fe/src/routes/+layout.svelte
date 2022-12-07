@@ -20,7 +20,9 @@
       return;
     }
 
-    console.log('FilterStore:', state);
+    if (inBrowser === true) {
+      console.log('FilterStore:', state);
+    }
   });
 
   onMount(() => {
